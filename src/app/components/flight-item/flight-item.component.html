@@ -1,8 +1,10 @@
 <div>
-    <p>
-        <!-- {{ flight.flight_id }}
-        {{ flight.company_name }} -->
-        <button (click)="onClick(flight)" class="del">
+    <div *ngIf="!flight.is_external">
+        <button
+            ng-show="flight.is_external == false"
+            (click)="onClick(flight)"
+            class="del"
+        >
             <svg
                 class="bi bi-trash-fill"
                 width="1em"
@@ -17,5 +19,5 @@
                 />
             </svg>
         </button>
-    </p>
+    </div>
 </div>

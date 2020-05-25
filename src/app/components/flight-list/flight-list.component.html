@@ -12,20 +12,17 @@
     <tr>
         <th class="text-center">#</th>
         <th>Airline</th>
-        <th class="text-right">Action</th>
+        <!-- <th class="text-right">Action</th> -->
     </tr>
     <tbody>
-        <tr
-            *ngFor="
-                let flight of flights | flights: { type: type };
-                let i = index
-            "
-        >
+        <tr *ngFor="let flight of flights | flights: { type: type }">
             <td>{{ flight.flight_id }}</td>
             <td>{{ flight.company_name }}</td>
             <td>
                 <flight-item
-                    >[flight]="flight" (deleteFlight)="deleteFlight($event)"
+                    [flight]="flight"
+                    (deleteFlight)="deleteFlight($event)"
+                >
                 </flight-item>
             </td>
         </tr>

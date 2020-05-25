@@ -19,4 +19,14 @@ export class FlightItemComponent implements OnInit {
         console.log('delete');
         this.deleteFlight.emit(flight);
     }
+
+    //Set dynamic classes
+    setClasses() {
+        let classes = {
+            flight: true,
+            isExternal: this.flight.is_external,
+        };
+
+        return classes;
+    }
 }

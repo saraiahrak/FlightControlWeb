@@ -16,16 +16,11 @@ export class FlightListComponent implements OnInit {
 
     ngOnInit(): void {}
 
-    // deleteFlight(flight: Flight) {
-    //     // this.flights.splice(index, 1);
-    //     this.flights = this.flights.filter(
-    //         (t) => t.flight_id !== flight.flight_id
-    //     );
-    //     // this.flightService.deleteFlight(flight).subscribe();
-    // }
-    deleteFlight(flight: Flight, index) {
-        this.flights.splice(index, 1);
-
+    deleteFlight(flight: Flight) {
+        // this.flights.splice(index, 1);
+        this.flights = this.flights.filter(
+            (t) => t.flight_id !== flight.flight_id
+        );
         // this.flightService.deleteFlight(flight).subscribe();
     }
 }
