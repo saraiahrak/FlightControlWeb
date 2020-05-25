@@ -1,0 +1,15 @@
+<div *ngIf="flights$ | async as flights">
+    <flight-list
+        id="internal"
+        title="Internal Flights"
+        [flights]="flights"
+        type="internal"
+    ></flight-list>
+
+    <flight-list
+        id="external"
+        title="External Flights"
+        [flights]="flights"
+        type="external"
+    ></flight-list>
+</div>

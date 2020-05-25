@@ -1,0 +1,9 @@
+.del {
+    background: none;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    float: inline-end;
+}
