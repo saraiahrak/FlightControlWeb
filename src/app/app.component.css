@@ -15,13 +15,11 @@
 }
 
 #flight-map {
-    /* height: 500px; */
-    flex: 0 68%;
+    flex: 0 73%;
 }
 
 #flight-details {
-    /* height: 250px; */
-    flex: 0 29.5%;
+    flex: 0 7%;
 }
 
 #flight-list {

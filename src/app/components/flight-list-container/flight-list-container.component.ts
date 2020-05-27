@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Flight } from 'src/app/models/Flight';
 import { Observable } from 'rxjs';
 import { FlightService } from 'src/app/services/flight-service/flight.service';
@@ -11,9 +11,32 @@ import { FlightService } from 'src/app/services/flight-service/flight.service';
 export class FlightListContainerComponent implements OnInit {
     flights$: Observable<Flight[]>;
 
+    dropZoneEntered: boolean = false;
     constructor(private flightService: FlightService) {}
 
     ngOnInit(): void {
         this.flights$ = this.flightService.getFlights(new Date(), true);
+    }
+
+    onDragLeave(event) {
+        console.log('leave');
+        this.dropZoneEntered = false;
+    }
+
+    onDragEntered(event) {
+        console.log('entered');
+        this.dropZoneEntered = true;
+    }
+
+    onDragEnd(event) {
+        console.log('Over');
+        this.dropZoneEntered = true;
+    }
+
+    setClasses() {
+        let classes = {
+            is_entered: this.dropZoneEntered,
+        };
+        return classes;
     }
 }

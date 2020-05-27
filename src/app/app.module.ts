@@ -12,6 +12,18 @@ import { FlightItemComponent } from './components/flight-item/flight-item.compon
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MapComponent } from './components/map/map.component';
 import { FlightDetailsComponent } from './components/flight-details/flight-details.component';
+import { FlightDetailComponent } from './components/flight-detail/flight-detail.component';
+import { DropzoneModule } from 'ngx-dropzone-wrapper';
+import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
+import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+    // Change this to your upload POST address:
+    url: 'http://localhost',
+    maxFilesize: 50,
+    acceptedFiles: 'image/*',
+    clickable: false,
+};
 
 @NgModule({
     declarations: [
@@ -23,15 +35,20 @@ import { FlightDetailsComponent } from './components/flight-details/flight-detai
         NavbarComponent,
         MapComponent,
         FlightDetailsComponent,
+        FlightDetailComponent,
     ],
     imports: [
+        DropzoneModule,
         BrowserModule,
         AppRoutingModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyANBjaWNBVp4ti-FDGs52f7XFePARhUxDY',
         }),
     ],
-    providers: [FlightService],
+    providers: [
+        FlightService,
+        { provide: DROPZONE_CONFIG, useValue: DEFAULT_DROPZONE_CONFIG },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

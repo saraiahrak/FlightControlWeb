@@ -1,1 +1,21 @@
-<p>flight-details works!</p>
+<div>
+    <table class="table">
+        <tr>
+            <th class="id">ID</th>
+            <th class="location">Location</th>
+            <th class="psngrs"># of Passengers</th>
+            <th class="Airline">Airline</th>
+        </tr>
+        <tbody>
+            <tr *ngIf="flightService.selectedFlight">
+                <td>{{ flightService.selectedFlight.flight_id }}</td>
+                <td>
+                    {{ flightService.selectedFlight.lontitude }},
+                    {{ flightService.selectedFlight.latitude }}
+                </td>
+                <td>{{ flightService.selectedFlight.passengers }}</td>
+                <td>{{ flightService.selectedFlight.company_name }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

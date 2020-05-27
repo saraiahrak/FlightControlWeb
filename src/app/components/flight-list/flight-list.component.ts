@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Flight } from 'src/app/models/Flight';
 import { FlightService } from 'src/app/services/flight-service/flight.service';
 
@@ -12,15 +12,29 @@ export class FlightListComponent implements OnInit {
     @Input() flights: Flight[];
     @Input() type: string;
 
-    constructor(private flightService: FlightService) {}
+    // selected: Flight;
+    constructor(public flightService: FlightService) {}
 
     ngOnInit(): void {}
 
     deleteFlight(flight: Flight) {
-        // this.flights.splice(index, 1);
         this.flights = this.flights.filter(
             (t) => t.flight_id !== flight.flight_id
         );
+        this.flightService.setSelected(null);
         // this.flightService.deleteFlight(flight).subscribe();
+    }
+
+    clickFlight(flight: Flight) {
+        let selected = this.flightService.selectedFlight;
+        if (!selected || selected.flight_id !== flight.flight_id) {
+            this.flightService.setSelected(flight);
+        } else {
+            this.flightService.setSelected(null);
+        }
+    }
+
+    onDragEntered(event) {
+        console.log('i am;');
     }
 }

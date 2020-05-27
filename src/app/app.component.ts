@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Flight } from './models/Flight';
 
 @Component({
     selector: 'app-root',

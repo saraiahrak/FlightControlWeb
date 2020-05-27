@@ -1,0 +1,15 @@
+@import "~dropzone/dist/min/dropzone.min.css";
+
+.pointer {
+    cursor: pointer;
+}
+
+dropzone > .dropzone.dz-wrapper {
+    position: absolute !important;
+    top: 0 !important;
+    height: 100% !important;
+}
+
+dropzone > .dropzone.dz-wrapper .dz-message {
+    display: none !important;
+}

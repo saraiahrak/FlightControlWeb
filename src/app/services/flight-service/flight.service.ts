@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Flight } from 'src/app/models/Flight';
 import * as moment from 'moment';
+import { FlightPlan } from 'src/app/models/FlightPlan';
+import { ServerInfo } from 'src/app/models/ServerInfo';
 
 @Injectable({
     providedIn: 'root',
 })
 export class FlightService {
+    selectedFlight: Flight;
     constructor() {}
 
+    public setSelected(flight: Flight) {
+        this.selectedFlight = flight;
+    }
     public getFlights(
         relative_to: Date,
         sync_all: boolean = false
@@ -68,7 +74,19 @@ export class FlightService {
         );
     }
 
-    deleteFlight(flight: Flight): Observable<Flight> {
-        return;
+    public postFlightPlan(plan: FlightPlan) {
+        console.log(plan);
     }
+
+    public getFlightPlanID(id: number) {}
+
+    public getServers() {}
+
+    public postServer(server: ServerInfo) {}
+
+    public deleteServer(server: ServerInfo) {}
+
+    // deleteFlight(flight: Flight): Observable<Flight> {
+    //     return;
+    // }
 }

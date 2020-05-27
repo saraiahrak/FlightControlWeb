@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { google } from '@agm/core/services/google-maps-types';
 
 @Component({
     selector: 'map',
-    styles: ['agm-map { height: 470px; /* height is required */ }'],
+    styles: ['agm-map { height: 535px; /* height is required */ }'],
     template: `
         <agm-map
             [latitude]="latitude"
@@ -13,9 +14,10 @@ import { Component, OnInit } from '@angular/core';
     `,
 })
 export class MapComponent implements OnInit {
-    latitude: Number = 34.873331;
-    longitude: Number = 32.006333;
+    latitude: Number = 32.0055;
+    longitude: Number = 34.8854;
     mapType = 'roadmap';
+
     constructor() {}
 
     ngOnInit(): void {}
