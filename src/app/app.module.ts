@@ -18,6 +18,8 @@ import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { DragDropDirective } from './directives/drag-drop.directive';
 import { UploadFilesComponent } from './components/upload-files/upload-files.component';
+import { AboutComponent } from './components/pages/about/about.component';
+import { AppContainerComponent } from './components/app-container/app-container.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     // Change this to your upload POST address:
@@ -39,6 +41,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
         FlightDetailComponent,
         DragDropDirective,
         UploadFilesComponent,
+        AboutComponent,
+        AppContainerComponent,
     ],
     imports: [
         DropzoneModule,

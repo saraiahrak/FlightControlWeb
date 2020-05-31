@@ -3,7 +3,7 @@
     [latitude]="latitude"
     [longitude]="longitude"
     [mapTypeId]="mapType"
-    [zoom]="2"
+    [zoom]="3"
     (mapClick)="mapClick($event)"
 >
     >
@@ -17,7 +17,11 @@
         [markerDraggable]="true"
         (markerClick)="selectMarker($event)"
     ></agm-marker>
-    <agm-polyline *ngIf="flightService.selectedFlight" [strokeColor]="'red'">
+    <agm-polyline
+        *ngIf="flightService.selectedFlight"
+        [strokeColor]="'black'"
+        [strokeWeight]="2.75"
+    >
         <agm-polyline-point
             [latitude]="flightService.selectedPlan.initial_location.latitude"
             [longitude]="flightService.selectedPlan.initial_location.longitude"

@@ -1,0 +1,38 @@
+#flight-container {
+    /* height: 100vh; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+#col1 {
+    flex: 0 74%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#flight-map {
+    flex: 0 78.5%;
+}
+
+#flight-details {
+    flex: 0 20%;
+}
+
+#flight-list {
+    flex: 0 25%;
+    height: 750px;
+}
+
+#map {
+    height: 100%;
+}
+
+div.card {
+    height: 100%;
+    padding: 15px;
+    margin-bottom: 0;
+}
