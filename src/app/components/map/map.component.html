@@ -4,8 +4,9 @@
     [longitude]="longitude"
     [mapTypeId]="mapType"
     [zoom]="2"
-    (mapClick)="addMarker($event.coords.lat, $event.coords.lng)"
+    (mapClick)="mapClick($event)"
 >
+    >
     <agm-marker
         class="marker"
         *ngFor="let marker of markers"
@@ -16,4 +17,17 @@
         [markerDraggable]="true"
         (markerClick)="selectMarker($event)"
     ></agm-marker>
+    <agm-polyline *ngIf="flightService.selectedFlight" [strokeColor]="'red'">
+        <agm-polyline-point
+            [latitude]="flightService.selectedPlan.initial_location.latitude"
+            [longitude]="flightService.selectedPlan.initial_location.longitude"
+        >
+        </agm-polyline-point>
+        <agm-polyline-point
+            *ngFor="let segment of flightService.selectedPlan.segments"
+            [latitude]="segment.latitude"
+            [longitude]="segment.longitude"
+        >
+        </agm-polyline-point>
+    </agm-polyline>
 </agm-map>

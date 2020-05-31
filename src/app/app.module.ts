@@ -16,12 +16,13 @@ import { FlightDetailComponent } from './components/flight-detail/flight-detail.
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { DragDropDirective } from './directives/drag-drop.directive';
+import { UploadFilesComponent } from './components/upload-files/upload-files.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     // Change this to your upload POST address:
     url: 'http://localhost',
     maxFilesize: 50,
-    acceptedFiles: 'image/*',
     clickable: false,
 };
 
@@ -36,6 +37,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
         MapComponent,
         FlightDetailsComponent,
         FlightDetailComponent,
+        DragDropDirective,
+        UploadFilesComponent,
     ],
     imports: [
         DropzoneModule,

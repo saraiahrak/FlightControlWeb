@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Marker, AgmMarker } from '@agm/core';
+import { FlightService } from 'src/app/services/flight-service/flight.service';
+import { Flight } from 'src/app/models/Flight';
+import { Observable } from 'rxjs';
+import { async } from '@angular/core/testing';
+import { FlightsPipe } from 'src/app/pipes/flights.pipe';
 
 @Component({
     selector: 'map',
@@ -7,22 +12,21 @@ import { Marker, AgmMarker } from '@agm/core';
     styleUrls: ['./map.component.css'],
 })
 export class MapComponent implements OnInit {
+    flights: Flight[];
+
     latitude: Number = 32.0055;
     longitude: Number = 34.8854;
     mapType = 'roadmap';
     public curicon =
         'https://img.icons8.com/android/24/000000/airplane-take-off.png';
     selectedMarker;
-    markers = [
-        // These are all just random coordinates from https://www.random.org/geographic-coordinates/
-        { lat: 22.33159, lng: 105.63233, alpha: 1 },
-        { lat: 7.92658, lng: -12.05228, alpha: 1 },
-        { lat: 48.75606, lng: -118.859, alpha: 1 },
-        { lat: 5.19334, lng: -67.03352, alpha: 1 },
-        { lat: 12.09407, lng: 26.31618, alpha: 1 },
-        { lat: 47.92393, lng: 78.58339, alpha: 1 },
-    ];
-    constructor() {}
+    markers = [];
+    constructor(public flightService: FlightService) {
+        this.setFlights();
+        for (let flight of this.flights) {
+            this.addMarker(flight.latitude, flight.longitude);
+        }
+    }
 
     ngOnInit(): void {}
 
@@ -30,10 +34,57 @@ export class MapComponent implements OnInit {
         this.markers.push({ lat, lng, alpha: 0.4 });
     }
 
+    mapClick(event) {
+        this.flightService.setSelected(null);
+    }
+
     selectMarker(event) {
-        this.selectedMarker = {
-            lat: event.latitude,
-            lng: event.longitude,
-        };
+        const { latitude: lat, longitude: lng } = event;
+        let flight = this.flights.find(
+            ({ latitude, longitude }) => latitude === lat && longitude === lng
+        );
+
+        this.flightService.setSelected(flight);
+    }
+
+    setFlights() {
+        this.flights = [
+            {
+                flight_id: 'Aa121',
+                longitude: 105.63233,
+                latitude: 22.33159,
+                passengers: 216,
+                company_name: 'El-Al',
+                date_time: '2023-08-25T23:56:21Z',
+                is_external: true,
+            },
+            {
+                flight_id: 'Aa122',
+                longitude: -12.05228,
+                latitude: 37.12,
+                passengers: 213,
+                company_name: 'Uriah-Air',
+                date_time: '2021-11-25T23:56:21Z',
+                is_external: true,
+            },
+            {
+                flight_id: 'Aa124',
+                longitude: -118.859,
+                latitude: 48.75606,
+                passengers: 216,
+                company_name: 'El-Al',
+                date_time: '2021-12-25T23:56:21Z',
+                is_external: false,
+            },
+            {
+                flight_id: 'Aa125',
+                longitude: 26.31618,
+                latitude: 12.09407,
+                passengers: 215,
+                company_name: 'Swiss',
+                date_time: '2020-11-25T13:55:21Z',
+                is_external: false,
+            },
+        ];
     }
 }

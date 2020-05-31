@@ -1,6 +1,6 @@
 export class Flight {
     flight_id: string;
-    lontitude: number;
+    longitude: number;
     latitude: number;
     passengers: number;
     company_name: string;

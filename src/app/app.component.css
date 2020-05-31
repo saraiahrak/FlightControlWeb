@@ -15,11 +15,11 @@
 }
 
 #flight-map {
-    flex: 0 73%;
+    flex: 0 78.5%;
 }
 
 #flight-details {
-    flex: 0 7%;
+    flex: 0 20%;
 }
 
 #flight-list {
@@ -34,4 +34,5 @@
 div.card {
     height: 100%;
     padding: 15px;
+    margin-bottom: 0;
 }

@@ -1,5 +1,5 @@
 export class Segment {
-    longtitdue: number;
+    longitude: number;
     latitude: number;
     timespan_seconds: number;
 }

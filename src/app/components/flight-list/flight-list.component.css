@@ -1,3 +1,7 @@
 .selected-flight {
     background-color: rgb(207, 207, 207);
 }
+.text-muted {
+    font-size: smaller;
+    font-style: oblique;
+}

@@ -1,8 +1,7 @@
 <div
     (dragenter)="onDragEntered($event)"
-    (dragleave)="onDragLeave($event)"
     *ngIf="!dropZoneEntered"
-    style="position: relative; z-index: 50;"
+    style="position: relative; overflow-y: scroll; height: 700px;"
 >
     <div *ngIf="flights$ | async as flights">
         <flight-list
@@ -20,10 +19,6 @@
         ></flight-list>
     </div>
 </div>
-<div [ngClass]="setClasses()">
-    <dropzone
-        class="drop"
-        (dragEnter)="onDragEntered($event)"
-        (dragLeave)="onDragLeave($event)"
-    ></dropzone>
+<div *ngIf="dropZoneEntered" (dragleave)="onDragLeave($event)">
+    <upload-files></upload-files>
 </div>

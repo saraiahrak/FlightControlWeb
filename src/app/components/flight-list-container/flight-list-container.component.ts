@@ -28,9 +28,10 @@ export class FlightListContainerComponent implements OnInit {
         this.dropZoneEntered = true;
     }
 
-    onDragEnd(event) {
-        console.log('Over');
-        this.dropZoneEntered = true;
+    onDropEvent(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        console.log(event);
     }
 
     setClasses() {

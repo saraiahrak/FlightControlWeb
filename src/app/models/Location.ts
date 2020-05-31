@@ -1,5 +1,5 @@
 export class Location {
-    longtitude: number;
+    longitude: number;
     latitude: number;
     date_time: string;
 }
