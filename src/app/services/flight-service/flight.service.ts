@@ -11,13 +11,17 @@ import { ServerInfo } from 'src/app/models/ServerInfo';
 export class FlightService {
     selectedFlight: Flight;
     selectedPlan: FlightPlan;
+
+    latitude: Number = 32.0055;
+    longitude: Number = 34.8854;
+
     constructor() {}
 
-    public setSelected(flight: Flight) {
+    public setSelected(flight?: Flight) {
         this.selectedFlight = flight;
         this.selectedPlan = this.getFlightPlanID(flight.flight_id);
-        console.log(this.selectedFlight);
-        console.log(this.selectedPlan);
+        this.latitude = this.selectedFlight.latitude;
+        this.longitude = this.selectedFlight.longitude;
     }
     public getFlights(
         relative_to: Date,

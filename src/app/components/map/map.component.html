@@ -1,7 +1,7 @@
 <agm-map
     class="map"
-    [latitude]="latitude"
-    [longitude]="longitude"
+    [latitude]="flightService.latitude"
+    [longitude]="flightService.longitude"
     [mapTypeId]="mapType"
     [zoom]="3"
     (mapClick)="mapClick($event)"

@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Output,
+    EventEmitter,
+    HostListener,
+} from '@angular/core';
 import { Flight } from 'src/app/models/Flight';
 import { Observable } from 'rxjs';
 import { FlightService } from 'src/app/services/flight-service/flight.service';
@@ -18,21 +24,47 @@ export class FlightListContainerComponent implements OnInit {
         this.flights$ = this.flightService.getFlights(new Date(), true);
     }
 
-    onDragLeave(event) {
-        console.log('leave');
+    //Dragleave listener
+    @HostListener('dragleave', ['$event']) public dragLeave(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
         this.dropZoneEntered = false;
     }
 
-    onDragEntered(event) {
-        console.log('entered');
+    //Dragleave listener
+    @HostListener('dragenter', ['$event']) public dragEnter(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
         this.dropZoneEntered = true;
     }
 
-    onDropEvent(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        console.log(event);
+    //Dragleave listener
+    // @HostListener('drop', ['$event']) public dragDrop(evt) {
+    //     evt.preventDefault();
+    //     evt.stopPropagation();
+    //     this.dropZoneEntered = false;
+    // }
+
+    receivePlans(files: File[]) {
+        this.dropZoneEntered = false;
     }
+
+    // onDragLeave(event) {
+    //     console.log('leave');
+    //     this.dropZoneEntered = false;
+    // }
+
+    // onDragEntered(event) {
+    //     console.log('entered');
+    //     this.dropZoneEntered = true;
+    // }
+
+    // onDropEvent(event) {
+    //     event.preventDefault();
+    //     event.stopPropagation();
+    //     console.log('dropped');
+    //     this.dropZoneEntered = false;
+    // }
 
     setClasses() {
         let classes = {

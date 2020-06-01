@@ -18,10 +18,12 @@ export class FlightListComponent implements OnInit {
     ngOnInit(): void {}
 
     deleteFlight(flight: Flight) {
+        if (flight.flight_id === this.flightService.selectedFlight.flight_id) {
+            this.flightService.setSelected(null);
+        }
         this.flights = this.flights.filter(
             (t) => t.flight_id !== flight.flight_id
         );
-        this.flightService.setSelected(null);
         // this.flightService.deleteFlight(flight).subscribe();
     }
 

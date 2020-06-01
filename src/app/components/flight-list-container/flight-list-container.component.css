@@ -1,24 +1,35 @@
 .is_entered {
     border-style: dashed;
 }
+
 /* width */
 ::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-    display: none;
+    width: 6px;
+}
+
+.general {
+    overflow: hidden;
+}
+
+.general:hover {
+    overflow-y: scroll;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
+    background: rgb(255, 255, 255);
+    /* border: 4px solid transparent; */
+    background-clip: content-box;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgb(156, 194, 206);
+    background: rgb(149, 168, 173);
+    height: 20%;
+    border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #679add;
+    background: #637081;
 }

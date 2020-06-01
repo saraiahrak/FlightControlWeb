@@ -14,14 +14,16 @@ import { FlightsPipe } from 'src/app/pipes/flights.pipe';
 export class MapComponent implements OnInit {
     flights: Flight[];
 
-    latitude: Number = 32.0055;
-    longitude: Number = 34.8854;
+    latitude: Number;
+    longitude: Number;
     mapType = 'roadmap';
     public curicon =
         'https://img.icons8.com/android/24/000000/airplane-take-off.png';
     selectedMarker;
     markers = [];
     constructor(public flightService: FlightService) {
+        this.latitude = flightService.latitude;
+        this.longitude = flightService.longitude;
         this.setFlights();
         for (let flight of this.flights) {
             this.addMarker(flight.latitude, flight.longitude);
@@ -45,6 +47,8 @@ export class MapComponent implements OnInit {
         );
 
         this.flightService.setSelected(flight);
+        this.latitude = lat;
+        this.longitude = lng;
     }
 
     setFlights() {
