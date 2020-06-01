@@ -45,7 +45,8 @@ export class FlightListContainerComponent implements OnInit {
     //     this.dropZoneEntered = false;
     // }
 
-    receivePlans(files: File[]) {
+    addFlights(files: File[]) {
+        this.flightService.addFiles(files);
         this.dropZoneEntered = false;
     }
 

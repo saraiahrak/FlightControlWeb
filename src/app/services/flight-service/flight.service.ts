@@ -87,6 +87,10 @@ export class FlightService {
         console.log(plan);
     }
 
+    public addFiles(files: File[]) {
+        console.log(files);
+    }
+
     public getFlightPlanID(id: string): FlightPlan {
         switch (id) {
             case 'Aa121':

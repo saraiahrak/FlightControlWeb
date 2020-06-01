@@ -1,6 +1,13 @@
 <div
     class="uploadfilecontainer"
-    appDragDrop
-    (onFileDropped)="uploadFile($event)"
+    (click)="fileInput.click()"
     dragDrop
-></div>
+    (onFileDropped)="uploadFile($event)"
+>
+    <input
+        hidden
+        type="file"
+        #fileInput
+        (change)="uploadFile($event.target.files)"
+    />
+</div>

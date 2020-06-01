@@ -6,12 +6,13 @@ import {
     HostBinding,
     HostListener,
 } from '@angular/core';
+import { Segment } from '../models/Segment';
 
 @Directive({
     selector: '[dragDrop]',
 })
 export class DragDropDirective {
-    @Output() onFileDropped = new EventEmitter<File>();
+    @Output() onFileDropped = new EventEmitter<File[]>();
 
     @HostBinding('style.background-color') private background = '#f5fcff';
     @HostBinding('style.opacity') private opacity = '1';
