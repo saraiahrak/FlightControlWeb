@@ -13,5 +13,20 @@ export class FlightDetailsComponent implements OnInit {
         this.flight = flightService.selectedFlight;
     }
 
+    public endTime() {
+        let t = new Date(
+            this.flightService.selectedPlan.initial_location.date_time
+        );
+        for (let seg of this.flightService.selectedPlan.segments) {
+            t.setSeconds(t.getSeconds() + seg.timespan_seconds);
+        }
+
+        return t.toISOString;
+    }
+
+    public startTime() {
+        return this.flightService.selectedPlan.initial_location.date_time;
+    }
+
     ngOnInit(): void {}
 }

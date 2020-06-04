@@ -1,0 +1,5 @@
+<div class="alerts-container">
+    <div class="alert-item" *ngFor="let alert of alerts$ | async">
+        <alert [alert]="alert"></alert>
+    </div>
+</div>

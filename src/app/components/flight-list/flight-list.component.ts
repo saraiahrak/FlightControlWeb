@@ -18,13 +18,13 @@ export class FlightListComponent implements OnInit {
     ngOnInit(): void {}
 
     deleteFlight(flight: Flight) {
-        if (flight.flight_id === this.flightService.selectedFlight.flight_id) {
+        if (flight.flight_id === this.flightService.selectedFlight?.flight_id) {
             this.flightService.setSelected(null);
         }
         this.flights = this.flights.filter(
             (t) => t.flight_id !== flight.flight_id
         );
-        // this.flightService.deleteFlight(flight).subscribe();
+        this.flightService.deleteFlight(flight.flight_id).subscribe();
     }
 
     clickFlight(flight: Flight) {
@@ -34,9 +34,5 @@ export class FlightListComponent implements OnInit {
         } else {
             this.flightService.setSelected(null);
         }
-    }
-
-    onDragEntered(event) {
-        console.log('i am;');
     }
 }

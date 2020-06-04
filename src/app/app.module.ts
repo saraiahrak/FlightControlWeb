@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,20 +14,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MapComponent } from './components/map/map.component';
 import { FlightDetailsComponent } from './components/flight-details/flight-details.component';
 import { FlightDetailComponent } from './components/flight-detail/flight-detail.component';
-import { DropzoneModule } from 'ngx-dropzone-wrapper';
-import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
-import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { DragDropDirective } from './directives/drag-drop.directive';
 import { UploadFilesComponent } from './components/upload-files/upload-files.component';
 import { AboutComponent } from './components/pages/about/about.component';
 import { AppContainerComponent } from './components/app-container/app-container.component';
-
-const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
-    // Change this to your upload POST address:
-    url: 'http://localhost',
-    maxFilesize: 50,
-    clickable: false,
-};
+import { AlertComponent } from './components/alert/alert.component';
+import { AlertsContainerComponent } from './components/alerts-container/alerts-container.component';
 
 @NgModule({
     declarations: [
@@ -43,9 +36,11 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
         UploadFilesComponent,
         AboutComponent,
         AppContainerComponent,
+        AlertComponent,
+        AlertsContainerComponent,
     ],
     imports: [
-        DropzoneModule,
+        HttpClientModule,
         BrowserModule,
         AppRoutingModule,
         AgmCoreModule.forRoot({
@@ -54,7 +49,6 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     ],
     providers: [
         FlightService,
-        { provide: DROPZONE_CONFIG, useValue: DEFAULT_DROPZONE_CONFIG },
     ],
     bootstrap: [AppComponent],
 })

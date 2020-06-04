@@ -1,37 +1,56 @@
-<agm-map
-    class="map"
-    [latitude]="flightService.latitude"
-    [longitude]="flightService.longitude"
-    [mapTypeId]="mapType"
-    [zoom]="3"
-    (mapClick)="mapClick($event)"
->
+<div>
+    <agm-map
+        class="map"
+        [latitude]="flightService.latitude"
+        [longitude]="flightService.longitude"
+        [mapTypeId]="mapType"
+        [zoom]="6"
+        (mapClick)="mapClick($event)"
     >
-    <agm-marker
-        class="marker"
-        *ngFor="let marker of markers"
-        [latitude]="marker.lat"
-        [longitude]="marker.lng"
-        [opacity]="marker.alpha"
-        [iconUrl]="curicon"
-        [markerDraggable]="true"
-        (markerClick)="selectMarker($event)"
-    ></agm-marker>
-    <agm-polyline
-        *ngIf="flightService.selectedFlight"
-        [strokeColor]="'black'"
-        [strokeWeight]="2.75"
-    >
-        <agm-polyline-point
-            [latitude]="flightService.selectedPlan.initial_location.latitude"
-            [longitude]="flightService.selectedPlan.initial_location.longitude"
         >
-        </agm-polyline-point>
-        <agm-polyline-point
-            *ngFor="let segment of flightService.selectedPlan.segments"
-            [latitude]="segment.latitude"
-            [longitude]="segment.longitude"
+        <div *ngIf="flights$ | async as flights">
+            <agm-marker
+                class="marker"
+                *ngFor="let marker of markers"
+                [latitude]="marker.lat"
+                [longitude]="marker.lng"
+                [opacity]="marker.alpha"
+                [iconUrl]="curicon"
+                [markerDraggable]="true"
+                (markerClick)="selectMarker($event, flights)"
+            ></agm-marker>
+        </div>
+
+        <div>
+            <agm-circle
+                *ngIf="flightService.selectedFlight"
+                [fillColor]="'red'"
+                [radius]="100000"
+                [latitude]="flightService.selectedFlight.latitude"
+                [longitude]="flightService.selectedFlight.longitude"
+            ></agm-circle>
+        </div>
+
+        <agm-polyline
+            *ngIf="flightService.selectedFlight"
+            [strokeColor]="'black'"
+            [strokeWeight]="2.75"
         >
-        </agm-polyline-point>
-    </agm-polyline>
-</agm-map>
+            <agm-polyline-point
+                [latitude]="
+                    flightService.selectedPlan.initial_location.latitude
+                "
+                [longitude]="
+                    flightService.selectedPlan.initial_location.longitude
+                "
+            >
+            </agm-polyline-point>
+            <agm-polyline-point
+                *ngFor="let segment of flightService.selectedPlan.segments"
+                [latitude]="segment.latitude"
+                [longitude]="segment.longitude"
+            >
+            </agm-polyline-point>
+        </agm-polyline>
+    </agm-map>
+</div>
